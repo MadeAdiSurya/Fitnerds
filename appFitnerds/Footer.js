@@ -5,11 +5,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 const Footer = () => {
   const [menuSelection, setMenuSelection] = useState("");
   return (
-    <View
-      style={{
-        flex: 1,
-      }}
-    >
+    <View>
       <View style={{ flex: 1 }}></View>
       <View
         style={{
