@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -6,18 +6,17 @@ import {
   ImageBackground,
   Image,
   TextInput,
-  Button,
   TouchableOpacity,
 } from "react-native";
 
-export default function Started() {
+export default function App() {
   return (
     <ImageBackground
-      source={require("./src/background-dark.png")}
+      source={require("../../src/background-dark.png")}
       style={styles.backgroundDark}
     >
       <View style={{ display: "flex", alignItems: "center", marginTop: 20 }}>
-        <Image source={require("./src/login-logo.png")}></Image>
+        <Image source={require("../../src/login-logo.png")}></Image>
       </View>
       <View
         style={{
@@ -30,12 +29,13 @@ export default function Started() {
         <Text
           style={{
             color: "#ffffff",
-            fontFamily: "bebas-neue-bold",
+            fontFamily: "bebas-neue",
             fontSize: 40,
             lineHeight: 40,
+            fontWeight: 800,
           }}
         >
-          To get started, first enter your phone, email, or @username
+          Enter Your Password
         </Text>
       </View>
 
@@ -46,11 +46,11 @@ export default function Started() {
         }}
       >
         <TextInput
-          placeholder="Phone, email, or username"
+          placeholder=""
           style={{
             width: 322,
             height: 45,
-            fontFamily: "",
+            fontFamily: "bebas-neue",
             borderWidth: 1,
             borderColor: "#7C7C7C",
             marginTop: 20,
@@ -58,7 +58,21 @@ export default function Started() {
             padding: 12,
             fontSize: 16,
             backgroundColor: "white",
+          }}
+        />
+        <TextInput
+          placeholder="Password"
+          style={{
+            width: 322,
+            height: 45,
             fontFamily: "bebas-neue",
+            borderWidth: 1,
+            borderColor: "#7C7C7C",
+            marginTop: 20,
+            borderRadius: 7,
+            padding: 12,
+            fontSize: 16,
+            backgroundColor: "white",
           }}
         />
       </View>
@@ -93,6 +107,7 @@ export default function Started() {
               style={{
                 fontSize: 16,
                 fontFamily: "bebas-neue",
+                fontWeight: 700,
                 color: "#D9D9D9",
                 paddingTop: 4,
                 paddingHorizontal: 6,
@@ -105,6 +120,8 @@ export default function Started() {
             style={{
               backgroundColor: "#7C7C7C",
               fontSize: 16,
+              fontFamily: "bebas-neue",
+              fontWeight: 700,
               borderRadius: 10,
               marginRight: 15,
             }}
@@ -114,10 +131,9 @@ export default function Started() {
                 paddingHorizontal: 13,
                 paddingVertical: 4,
                 color: "#444343",
-                fontFamily: "bebas-neue",
               }}
             >
-              Next
+              Log In
             </Text>
           </TouchableOpacity>
         </View>

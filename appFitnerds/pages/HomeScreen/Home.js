@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import {
   FlatList,
@@ -9,11 +8,37 @@ import {
   Image,
   ImageBackground,
   ScrollView,
+  Animated,
+  StatusBar,
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Footer from "./Footer";
 
+const HEADER_MAX_HEIGHT = 70;
+const HEADER_MIN_HEIGHT = 60;
+const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
+
 const Home = () => {
+  const [scrollY, setScrollY] = useState(new Animated.Value(0));
+
+  const headerHeight = scrollY.interpolate({
+    inputRange: [0, HEADER_SCROLL_DISTANCE],
+    outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
+    extrapolate: "clamp",
+  });
+
+  const headerBackgroundColor = scrollY.interpolate({
+    inputRange: [0, HEADER_SCROLL_DISTANCE],
+    outputRange: ["#141414", "#7FBD3E"],
+    extrapolate: "clamp",
+  });
+
+  const headerFontColor = scrollY.interpolate({
+    inputRange: [0, HEADER_SCROLL_DISTANCE],
+    outputRange: ["#FFFFFF", "#000000"],
+    extrapolate: "clamp",
+  });
+
   const [data, setData] = useState([
     { number: 0, deskripsi: "workout" },
     { number: 0, deskripsi: "KCAL" },
@@ -47,35 +72,49 @@ const Home = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <StatusBar barStyle="dark-content" backgroundColor="#f4f4f4" />
+      <StatusBar barStyle="light-content" backgroundColor="#141414" />
+      <Animated.View
+        style={{
+          height: headerHeight,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: headerBackgroundColor,
+          display: "flex",
+          alignItems: "flex-start",
+        }}
+      >
+        <Animated.Text
+          style={{
+            fontFamily: "bebas-neue-bold",
+            color: "#FFFFFF",
+            fontSize: 24,
+            padding: 15,
+          }}
+        >
+          FIT
+          <Animated.Text style={{ color: headerFontColor }}>
+            NERDS
+          </Animated.Text>
+        </Animated.Text>
+      </Animated.View>
+      <ScrollView
+        id="scrollview"
+        showsVerticalScrollIndicator={false}
+        style={{ flex: 1 }}
+        scrollEventThrottle={16}
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+          {
+            useNativeDriver: false,
+          }
+        )}
+      >
         <View
           style={{
             height: 340,
-            backgroundColor: "#788048",
+            backgroundColor: "#141414",
           }}
         >
-          <View>
-            <Text
-              style={{
-                marginTop: 70,
-                marginLeft: 30,
-                fontSize: 25,
-                fontWeight: 700,
-              }}
-            >
-              FIT<Text style={{ color: "#f4f4f4" }}>NERDS</Text>
-            </Text>
-            <Text
-              style={{
-                marginLeft: 30,
-                fontStyle: "italic",
-                fontSize: 18,
-              }}
-            >
-              your solution for home workout activity.
-            </Text>
-          </View>
           <View
             style={{
               flexDirection: "row",
@@ -87,21 +126,36 @@ const Home = () => {
               data={data}
               horizontal
               showsHorizontalScrollIndicator={false}
+              style={{ backgroundColor: "red" }}
               renderItem={({ item }) => (
                 <View
                   style={{
+                    display: "flex",
                     paddingTop: 50,
                     paddingHorizontal: 40,
                     justifyContent: "center",
                     alignItems: "center",
+                    backgroundColor: "blue",
                   }}
                 >
                   <Text
-                    style={{ fontSize: 25, fontWeight: 700, color: "#f4f4f4" }}
+                    style={{
+                      fontSize: 25,
+                      fontWeight: 700,
+                      color: "#f4f4f4",
+                      fontFamily: "bebas-neue",
+                    }}
                   >
                     {item.number}
                   </Text>
-                  <Text style={{ fontSize: 15, fontWeight: 400 }}>
+                  <Text
+                    style={{
+                      fontSize: 18,
+                      fontWeight: 400,
+                      color: "#f4f4f4",
+                      fontFamily: "bebas-neue",
+                    }}
+                  >
                     {item.deskripsi}
                   </Text>
                 </View>
@@ -183,7 +237,7 @@ const Home = () => {
             }}
           >
             <Image
-              source={require("./src/beginner.jpg")}
+              source={require("../../src/beginner.jpg")}
               style={{
                 height: 200,
                 width: "80%",
@@ -210,7 +264,7 @@ const Home = () => {
             }}
           >
             <Image
-              source={require("./src/intermediate.jpg")}
+              source={require("../../src/intermediate.jpg")}
               style={{
                 height: 200,
                 width: "80%",
@@ -238,7 +292,7 @@ const Home = () => {
             }}
           >
             <Image
-              source={require("./src/expert.jpg")}
+              source={require("../../src/expert.jpg")}
               style={{
                 height: 200,
                 width: "80%",
