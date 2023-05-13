@@ -13,12 +13,14 @@ import {
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Footer from "./Footer";
+import { DateSlider } from "./DateSlider";
 
 const HEADER_MAX_HEIGHT = 70;
 const HEADER_MIN_HEIGHT = 60;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 
 const Home = () => {
+  // Create Collapse Header
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
 
   const headerHeight = scrollY.interpolate({
@@ -39,11 +41,7 @@ const Home = () => {
     extrapolate: "clamp",
   });
 
-  const [data, setData] = useState([
-    { number: 0, deskripsi: "workout" },
-    { number: 0, deskripsi: "KCAL" },
-    { number: 0, deskripsi: "minute" },
-  ]);
+  // End of Collapse Header
 
   const [press, setPress] = useState("");
 
@@ -68,10 +66,14 @@ const Home = () => {
   let todaysYear = new Date().getFullYear();
   let todaysMonth = new Date().getMonth() + 1;
 
+  let firstDay = new Date(todaysYear, todaysMonth, 1).getDate();
+  // let firstDayArray = []
+  // firstDay.push(firstDay)
+
   getAllDay(getLastDay(todaysYear, todaysMonth));
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: "#7FBD3E" }}>
       <StatusBar barStyle="light-content" backgroundColor="#141414" />
       <Animated.View
         style={{
@@ -111,7 +113,7 @@ const Home = () => {
       >
         <View
           style={{
-            height: 340,
+            height: 240,
             backgroundColor: "#141414",
           }}
         >
@@ -119,48 +121,24 @@ const Home = () => {
             style={{
               flexDirection: "row",
               alignItems: "center",
-              justifyContent: "center",
+              justifyContent: "space-between",
+              marginHorizontal: 34,
+              marginBottom: 25,
+              marginTop: 36,
             }}
           >
-            <FlatList
-              data={data}
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              style={{ backgroundColor: "red" }}
-              renderItem={({ item }) => (
-                <View
-                  style={{
-                    display: "flex",
-                    paddingTop: 50,
-                    paddingHorizontal: 40,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    backgroundColor: "blue",
-                  }}
-                >
-                  <Text
-                    style={{
-                      fontSize: 25,
-                      fontWeight: 700,
-                      color: "#f4f4f4",
-                      fontFamily: "bebas-neue",
-                    }}
-                  >
-                    {item.number}
-                  </Text>
-                  <Text
-                    style={{
-                      fontSize: 18,
-                      fontWeight: 400,
-                      color: "#f4f4f4",
-                      fontFamily: "bebas-neue",
-                    }}
-                  >
-                    {item.deskripsi}
-                  </Text>
-                </View>
-              )}
-            />
+            <View style={{ display: "flex", alignItems: "center" }}>
+              <Text style={styles.homeTopText}>0</Text>
+              <Text style={styles.homeTopContent}>WORKOUTS</Text>
+            </View>
+            <View style={{ display: "flex", alignItems: "center" }}>
+              <Text style={styles.homeTopText}>0</Text>
+              <Text style={styles.homeTopContent}>KCAL</Text>
+            </View>
+            <View style={{ display: "flex", alignItems: "center" }}>
+              <Text style={styles.homeTopText}>0</Text>
+              <Text style={styles.homeTopContent}>MINS</Text>
+            </View>
           </View>
 
           <View
@@ -188,7 +166,7 @@ const Home = () => {
                   marginRight: 10,
                 }}
               >
-                <Text style={{ fontStyle: "italic" }}>Daily Goal</Text>
+                <Text style={{ fontStyle: "italic" }}>WEEK</Text>
               </View>
               <View
                 style={{
@@ -199,7 +177,10 @@ const Home = () => {
                 <Ionicons name="create-outline" size={20} color="black" />
               </View>
             </TouchableOpacity>
-            <View style={{ justifyContent: "center", alignItems: "center" }}>
+            <View style={{ flex: 1, backgroundColor: "red", height: 200 }}>
+              <DateSlider />
+            </View>
+            {/* <View style={{ justifyContent: "center", alignItems: "center" }}>
               <FlatList
                 data={tempArray}
                 horizontal
@@ -225,9 +206,10 @@ const Home = () => {
                   </TouchableOpacity>
                 )}
               />
-            </View>
+            </View> */}
           </View>
         </View>
+
         <View>
           <TouchableOpacity
             style={{
@@ -317,5 +299,20 @@ const Home = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  homeTopText: {
+    fontFamily: "bebas-neue-bold",
+    color: "#FFFFFF",
+    fontSize: 28,
+  },
+
+  homeTopContent: {
+    fontFamily: "bebas-neue",
+    color: "#f9f9f9f9",
+    fontSize: 18,
+    paddingVertical: 8,
+  },
+});
 
 export default Home;

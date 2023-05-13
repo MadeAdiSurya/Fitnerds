@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
-import { Home, Login, Started, Splash } from "./pages";
+import { Home, Login, Started, Splash, MonthCalendar } from "./pages";
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +26,7 @@ export default function App() {
         <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Started" component={Started} />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="MonthCalendar" component={MonthCalendar} />
       </Stack.Navigator>
     </NavigationContainer>
   );
