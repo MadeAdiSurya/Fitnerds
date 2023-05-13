@@ -146,38 +146,27 @@ const Home = () => {
               marginHorizontal: 30,
               marginVertical: 20,
               height: 120,
-              backgroundColor: "#f4f4f4f4",
-              borderRadius: 15,
+              backgroundColor: "#7FBD3E",
+              borderRadius: 10,
               elevation: 3,
             }}
           >
-            <TouchableOpacity
+            <View
               style={{
                 flexDirection: "row",
-                marginLeft: 20,
-                marginBottom: 20,
-                marginTop: 10,
+                marginLeft: 15,
+                marginVertical: 15,
               }}
             >
-              <View
-                style={{
-                  justifyContent: "center",
-                  alignItems: "center",
-                  marginRight: 10,
-                }}
-              >
-                <Text style={{ fontStyle: "italic" }}>WEEK</Text>
-              </View>
-              <View
-                style={{
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Ionicons name="create-outline" size={20} color="black" />
-              </View>
-            </TouchableOpacity>
-            <View style={{ flex: 1, backgroundColor: "red", height: 200 }}>
+              <Text style={{ fontFamily: "bebas-neue-bold", fontSize: 22 }}>
+                WEEK GOAL
+              </Text>
+            </View>
+            <View
+              style={{
+                flex: 1,
+              }}
+            >
               <DateSlider />
             </View>
             {/* <View style={{ justifyContent: "center", alignItems: "center" }}>

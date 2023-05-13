@@ -60,12 +60,24 @@ export const DateSlider: React.FC = () => {
                 const txt = format(day, "EEEEE");
                 return (
                   <View style={styles.day} key={index}>
-                    <Text>{txt}</Text>
-                    <TouchableOpacity>
+                    {/* <Text>{txt}</Text> */}
+                    <TouchableOpacity
+                      style={{
+                        paddingVertical: 5,
+                        paddingHorizontal: 10,
+                        backgroundColor:
+                          day.getDate() === currentDate ? "#ffffff" : "#8CCA4B",
+                        borderRadius: 50,
+                      }}
+                    >
                       <Text
                         style={{
                           color:
-                            day.getDate() === currentDate ? "green" : "black",
+                            day.getDate() === currentDate
+                              ? "#000000"
+                              : "#619F20",
+                          fontFamily: "bebas-neue-bold",
+                          fontSize: 18,
                         }}
                       >
                         {day.getDate()}
@@ -85,10 +97,12 @@ export const DateSlider: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#7FBD3E",
   },
   row: {
     flexDirection: "row",
     justifyContent: "space-around",
+    margin: 15,
   },
   day: {
     alignItems: "center",
