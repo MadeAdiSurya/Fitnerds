@@ -14,6 +14,7 @@ import {
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Footer from "./Footer";
 import { DateSlider } from "./DateSlider";
+import WorkoutCards from "./WorkoutCards";
 
 const HEADER_MAX_HEIGHT = 70;
 const HEADER_MIN_HEIGHT = 60;
@@ -113,7 +114,7 @@ const Home = () => {
       >
         <View
           style={{
-            height: 240,
+            height: 200,
             backgroundColor: "#141414",
           }}
         >
@@ -169,119 +170,22 @@ const Home = () => {
             >
               <DateSlider />
             </View>
-            {/* <View style={{ justifyContent: "center", alignItems: "center" }}>
-              <FlatList
-                data={tempArray}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                renderItem={({ item }) => (
-                  <TouchableOpacity
-                    style={{
-                      paddingVertical: 10,
-                      marginRight: 5,
-                      marginLeft: 20,
-                      paddingHorizontal: 5,
-                      backgroundColor: "#ffffff",
-                      borderRadius: 25,
-                      elevation: 3,
-                      marginVertical: 10,
-                      alignItems: "center",
-                      justifyContent: "center",
-                      height: 35,
-                      width: 35,
-                    }}
-                  >
-                    <Text style={{ fontSize: 10 }}>{item}</Text>
-                  </TouchableOpacity>
-                )}
-              />
-            </View> */}
           </View>
         </View>
 
-        <View>
-          <TouchableOpacity
+        <View style={{ marginTop: 110 }}>
+          <Text
             style={{
-              justifyContent: "center",
-              alignItems: "center",
-              marginTop: 70,
+              fontFamily: "bebas-neue-bold",
+              color: "#141414",
+              fontSize: 18,
+              marginLeft: 25,
+              marginBottom: 5,
             }}
           >
-            <Image
-              source={require("../../src/beginner.jpg")}
-              style={{
-                height: 200,
-                width: "80%",
-                borderRadius: 15,
-              }}
-            />
-            <Text
-              style={{
-                position: "absolute",
-                left: 50,
-                top: 20,
-                color: "white",
-                fontSize: 18,
-              }}
-            >
-              BEGINNER
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              justifyContent: "center",
-              alignItems: "center",
-              marginTop: 50,
-            }}
-          >
-            <Image
-              source={require("../../src/intermediate.jpg")}
-              style={{
-                height: 200,
-                width: "80%",
-                borderRadius: 15,
-              }}
-            />
-            <Text
-              style={{
-                position: "absolute",
-                left: 50,
-                top: 20,
-                color: "white",
-                fontSize: 18,
-              }}
-            >
-              INTERMEDIATE
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              justifyContent: "center",
-              alignItems: "center",
-              marginTop: 50,
-              marginBottom: 30,
-            }}
-          >
-            <Image
-              source={require("../../src/expert.jpg")}
-              style={{
-                height: 200,
-                width: "80%",
-                borderRadius: 15,
-              }}
-            />
-            <Text
-              style={{
-                position: "absolute",
-                left: 50,
-                top: 20,
-                color: "white",
-                fontSize: 18,
-              }}
-            >
-              EXPERT
-            </Text>
-          </TouchableOpacity>
+            BEGINNER
+          </Text>
+          <WorkoutCards />
         </View>
       </ScrollView>
       <Footer />

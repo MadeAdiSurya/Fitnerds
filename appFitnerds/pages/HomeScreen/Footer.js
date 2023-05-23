@@ -1,61 +1,129 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { Feather } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 const Footer = () => {
-  const [menuSelection, setMenuSelection] = useState("");
+  const [menuSelection, setMenuSelection] = useState("Training");
+
   return (
     <View>
       <View style={{ flex: 1 }}></View>
       <View
         style={{
           flexDirection: "row",
-          backgroundColor: "#f4f4f4",
-          elevation: 3,
-          padding: 10,
-          marginHorizontal: 20,
-          marginVertical: 10,
-          borderRadius: 15,
+          justifyContent: "space-between",
+          paddingTop: 10,
         }}
       >
         <TouchableOpacity
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          style={styles.footerIcon}
           onPress={() => {
             setMenuSelection("Training");
           }}
         >
-          <Ionicons
-            name="barbell-outline"
-            size={30}
-            color={menuSelection == "Training" ? "#788048" : "black"}
+          <FontAwesome5
+            name="stopwatch"
+            size={24}
+            style={{
+              color:
+                menuSelection === "Training"
+                  ? "#121212"
+                  : " rgba(18,18,18,0.2)",
+            }}
           />
-          <Text>Training</Text>
+          <Text
+            style={[
+              styles.footerText,
+              {
+                color:
+                  menuSelection === "Training"
+                    ? "#121212"
+                    : " rgba(18,18,18,0.2)",
+              },
+            ]}
+          >
+            Training
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          onPress={() => setMenuSelection("Report")}
+          style={styles.footerIcon}
+          onPress={() => {
+            setMenuSelection("Report");
+          }}
         >
-          <Ionicons
-            name="bar-chart-outline"
-            size={30}
-            color={menuSelection == "Report" ? "#788048" : "black"}
+          <Feather
+            name="bar-chart"
+            size={24}
+            style={{
+              color:
+                menuSelection === "Report" ? "#121212" : " rgba(18,18,18,0.2)",
+            }}
           />
-          <Text>Report</Text>
+          <Text
+            style={[
+              styles.footerText,
+              {
+                color:
+                  menuSelection === "Report"
+                    ? "#121212"
+                    : " rgba(18,18,18,0.2)",
+              },
+            ]}
+          >
+            Report
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          onPress={() => setMenuSelection("Setting")}
+          style={styles.footerIcon}
+          onPress={() => {
+            setMenuSelection("Settings");
+          }}
         >
-          <Ionicons
-            name="person-outline"
-            size={30}
-            color={menuSelection == "Setting" ? "#788048" : "black"}
+          <MaterialIcons
+            name="person"
+            size={24}
+            style={{
+              color:
+                menuSelection === "Settings"
+                  ? "#121212"
+                  : " rgba(18,18,18,0.2)",
+            }}
           />
-          <Text>Setting</Text>
+          <Text
+            style={[
+              styles.footerText,
+              {
+                color:
+                  menuSelection === "Settings"
+                    ? "#121212"
+                    : " rgba(18,18,18,0.2)",
+              },
+            ]}
+          >
+            Settings
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  footerText: {
+    fontFamily: "bebas-neue-bold",
+    fontSize: 16,
+    marginTop: 5,
+  },
+
+  footerIcon: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingBottom: 10,
+  },
+});
 
 export default Footer;
