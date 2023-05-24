@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, StyleSheet, ImageBackground, Image } from "react-native";
 
-export default function Splash() {
+export default function Splash({ navigation }) {
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.replace("Started");
+    }, 2000);
+  }, []);
+
   return (
     <ImageBackground
       source={require("../../src/background-dark.png")}

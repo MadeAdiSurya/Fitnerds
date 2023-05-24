@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 const WorkOut = () => {
   const route = useRoute();
-
+  const navigation = useNavigation();
   return (
     <>
       <ScrollView style={{ backgroundColor: "#121212" }}>
@@ -110,6 +110,11 @@ const WorkOut = () => {
             width: 250,
             borderRadius: 10,
           }}
+          onPress={() =>
+            navigation.navigate("Training", {
+              exercises: route.params.exercises,
+            })
+          }
         >
           <Text
             style={{

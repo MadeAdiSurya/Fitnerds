@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useContext, createContext } from "react";
 import {
   FlatList,
   StyleSheet,
@@ -15,12 +15,21 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import Footer from "./Footer";
 import { DateSlider } from "./DateSlider";
 import WorkoutCards from "./WorkoutCards";
+import { FitnessContex, FitnessItems } from "../../Context";
 
 const HEADER_MAX_HEIGHT = 70;
 const HEADER_MIN_HEIGHT = 60;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 
 const Home = () => {
+  const {
+    minutes,
+
+    calories,
+
+    workout,
+  } = useContext(FitnessItems);
+
   // Create Collapse Header
   const [scrollY, setScrollY] = useState(new Animated.Value(0));
 
@@ -129,15 +138,15 @@ const Home = () => {
             }}
           >
             <View style={{ display: "flex", alignItems: "center" }}>
-              <Text style={styles.homeTopText}>0</Text>
+              <Text style={styles.homeTopText}>{workout}</Text>
               <Text style={styles.homeTopContent}>WORKOUTS</Text>
             </View>
             <View style={{ display: "flex", alignItems: "center" }}>
-              <Text style={styles.homeTopText}>0</Text>
+              <Text style={styles.homeTopText}>{calories}</Text>
               <Text style={styles.homeTopContent}>KCAL</Text>
             </View>
             <View style={{ display: "flex", alignItems: "center" }}>
-              <Text style={styles.homeTopText}>0</Text>
+              <Text style={styles.homeTopText}>{minutes}</Text>
               <Text style={styles.homeTopContent}>MINS</Text>
             </View>
           </View>
