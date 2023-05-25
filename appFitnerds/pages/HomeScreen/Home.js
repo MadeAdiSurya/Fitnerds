@@ -100,7 +100,7 @@ const Home = () => {
       >
         <Animated.Text
           style={{
-            fontFamily: "bebas-neue-bold",
+            // fontFamily: "bebas-neue-bold",
             color: "#FFFFFF",
             fontSize: 24,
             padding: 15,
@@ -171,7 +171,12 @@ const Home = () => {
                 marginVertical: 15,
               }}
             >
-              <Text style={{ fontFamily: "bebas-neue-bold", fontSize: 22 }}>
+              <Text
+                style={{
+                  // fontFamily: "bebas-neue-bold",
+                  fontSize: 22,
+                }}
+              >
                 WEEK GOAL
               </Text>
             </View>
@@ -188,7 +193,7 @@ const Home = () => {
         <View style={{ marginTop: 110 }}>
           <Text
             style={{
-              fontFamily: "bebas-neue-bold",
+              // fontFamily: "bebas-neue-bold",
               color: "#141414",
               fontSize: 18,
               marginLeft: 25,
@@ -202,7 +207,7 @@ const Home = () => {
         <View style={{ marginTop: 50 }}>
           <Text
             style={{
-              fontFamily: "bebas-neue-bold",
+              // fontFamily: "bebas-neue-bold",
               color: "#141414",
               fontSize: 18,
               marginLeft: 25,
@@ -216,7 +221,7 @@ const Home = () => {
         <View style={{ marginTop: 50 }}>
           <Text
             style={{
-              fontFamily: "bebas-neue-bold",
+              // fontFamily: "bebas-neue-bold",
               color: "#141414",
               fontSize: 18,
               marginLeft: 25,
@@ -235,13 +240,13 @@ const Home = () => {
 
 const styles = StyleSheet.create({
   homeTopText: {
-    fontFamily: "bebas-neue-bold",
+    // fontFamily: "bebas-neue-bold",
     color: "#FFFFFF",
     fontSize: 28,
   },
 
   homeTopContent: {
-    fontFamily: "bebas-neue",
+    // fontFamily: "bebas-neue",
     color: "#f9f9f9f9",
     fontSize: 18,
     paddingVertical: 8,

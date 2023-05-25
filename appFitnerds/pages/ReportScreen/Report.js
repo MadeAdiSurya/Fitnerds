@@ -159,7 +159,12 @@ const Report = () => {
                 marginVertical: 15,
               }}
             >
-              <Text style={{ fontFamily: "bebas-neue-bold", fontSize: 22 }}>
+              <Text
+                style={{
+                  // fontFamily: "bebas-neue-bold",
+                  fontSize: 22,
+                }}
+              >
                 HISTORY
               </Text>
             </View>
@@ -183,13 +188,13 @@ const Report = () => {
 
 const styles = StyleSheet.create({
   homeTopText: {
-    fontFamily: "bebas-neue-bold",
+    // fontFamily: "bebas-neue-bold",
     color: "#121212",
     fontSize: 28,
   },
 
   homeTopContent: {
-    fontFamily: "bebas-neue",
+    // fontFamily: "bebas-neue",
     color: "#121212",
     fontSize: 18,
     paddingVertical: 8,

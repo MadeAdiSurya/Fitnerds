@@ -49,7 +49,7 @@ const RestScreen = () => {
         <Text
           style={{
             color: "#121212",
-            fontFamily: "bebas-neue-bold",
+            // fontFamily: "bebas-neue-bold",
             fontSize: 36,
             color: "#ffffff",
           }}
@@ -69,7 +69,7 @@ const RestScreen = () => {
         <Text
           style={{
             color: "#ffffff",
-            fontFamily: "bebas-neue-bold",
+            // fontFamily: "bebas-neue-bold",
             fontSize: 90,
           }}
         >

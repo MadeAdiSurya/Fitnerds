@@ -41,7 +41,7 @@ const WorkoutCards = () => {
             style={{
               position: "absolute",
               color: "#ffffff",
-              fontFamily: "bebas-neue-bold",
+              // fontFamily: "bebas-neue-bold",
               fontSize: 18,
               left: 30,
               top: 10,

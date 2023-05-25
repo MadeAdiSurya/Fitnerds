@@ -118,7 +118,7 @@ const Footer = ({ currentPage }) => {
 
 const styles = StyleSheet.create({
   footerText: {
-    fontFamily: "bebas-neue-bold",
+    // fontFamily: "bebas-neue-bold",
     fontSize: 16,
     marginTop: 5,
   },

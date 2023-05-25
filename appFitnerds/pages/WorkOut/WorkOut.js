@@ -32,7 +32,7 @@ const WorkOut = () => {
             <Ionicons name="chevron-back-sharp" size={24} color="#ffffff" />
             <Text
               style={{
-                fontFamily: "bebas-neue",
+                // fontFamily: "bebas-neue",
                 fontSize: 24,
                 color: "#ffffff",
               }}
@@ -79,7 +79,7 @@ const WorkOut = () => {
             >
               <Text
                 style={{
-                  fontFamily: "bebas-neue-bold",
+                  // fontFamily: "bebas-neue-bold",
                   fontSize: 24,
                   color: "#121212",
                 }}
@@ -88,7 +88,7 @@ const WorkOut = () => {
               </Text>
               <Text
                 style={{
-                  fontFamily: "bebas-neue",
+                  // fontFamily: "bebas-neue",
                   fontSize: 16,
                   color: "#ffffff",
                 }}
@@ -126,7 +126,7 @@ const WorkOut = () => {
             style={{
               textAlign: "center",
               color: "#ffffff",
-              fontFamily: "bebas-neue-bold",
+              // fontFamily: "bebas-neue-bold",
               fontSize: 24,
               letterSpacing: 3,
             }}

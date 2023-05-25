@@ -54,7 +54,7 @@ const Training = () => {
           <Text
             style={{
               textAlign: "center",
-              fontFamily: "bebas-neue-bold",
+              // fontFamily: "bebas-neue-bold",
               fontSize: 26,
               color: "#ffffff",
             }}
@@ -74,7 +74,12 @@ const Training = () => {
             justifyContent: "center",
           }}
         >
-          <Text style={{ fontFamily: "bebas-neue-bold", fontSize: 20 }}>
+          <Text
+            style={{
+              // fontFamily: "bebas-neue-bold",
+              fontSize: 20,
+            }}
+          >
             x{current.sets}
           </Text>
         </View>
@@ -105,7 +110,7 @@ const Training = () => {
                   color: "#ffffff",
                   fontSize: 26,
                   letterSpacing: 2,
-                  fontFamily: "bebas-neue-bold",
+                  // fontFamily: "bebas-neue-bold",
                 }}
               >
                 DONE
@@ -137,7 +142,7 @@ const Training = () => {
                   color: "#ffffff",
                   fontSize: 26,
                   letterSpacing: 2,
-                  fontFamily: "bebas-neue-bold",
+                  // fontFamily: "bebas-neue-bold",
                 }}
               >
                 DONE

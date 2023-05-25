@@ -20,7 +20,7 @@ export default function Splash({ navigation }) {
       <View style={{ display: "flex", alignItems: "center", marginBottom: 34 }}>
         <Text
           style={{
-            fontFamily: "bebas-neue-bold",
+            // fontFamily: "bebas-neue-bold",
             fontSize: 54,
             color: "rgba(206, 228,82, 0.25)",
           }}

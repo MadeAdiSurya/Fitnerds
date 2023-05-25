@@ -74,7 +74,7 @@ export const DateSlider: React.FC = () => {
                             day.getDate() === currentDate
                               ? "#000000"
                               : "#619F20",
-                          fontFamily: "bebas-neue-bold",
+                          // fontFamily: "bebas-neue-bold",
                           fontSize: 18,
                         }}
                       >

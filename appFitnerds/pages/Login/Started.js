@@ -96,7 +96,7 @@ export default function Started() {
         <Text
           style={{
             color: "#ffffff",
-            fontFamily: "bebas-neue-bold",
+            // fontFamily: "bebas-neue-bold",
             fontSize: 40,
             lineHeight: 40,
           }}
@@ -116,14 +116,13 @@ export default function Started() {
           style={{
             width: 322,
             height: 45,
-            fontFamily: "bebas-neue",
+            // fontFamily: "bebas-neue",
             borderWidth: 1,
             borderColor: "#7C7C7C",
             marginTop: 30,
             borderRadius: 7,
             padding: 12,
             fontSize: 16,
-            fontFamily: "bebas-neue",
             backgroundColor: "rgba(18,18,18, 0.3)",
             color: "rgba(255,255,255,0.4)",
           }}
@@ -144,14 +143,13 @@ export default function Started() {
           style={{
             width: 322,
             height: 45,
-            fontFamily: "bebas-neue",
+            // fontFamily: "bebas-neue",
             borderWidth: 1,
             borderColor: "#7C7C7C",
             marginTop: 10,
             borderRadius: 7,
             padding: 12,
             fontSize: 16,
-            fontFamily: "bebas-neue",
             backgroundColor: "rgba(18,18,18, 0.3)",
             color: "rgba(255,255,255,0.4)",
           }}
@@ -192,7 +190,7 @@ export default function Started() {
             <Text
               style={{
                 fontSize: 16,
-                fontFamily: "bebas-neue",
+                // fontFamily: "bebas-neue",
                 color: "#D9D9D9",
                 paddingTop: 4,
                 paddingHorizontal: 6,
@@ -214,7 +212,7 @@ export default function Started() {
                 paddingHorizontal: 13,
                 paddingVertical: 4,
                 color: "#444343",
-                fontFamily: "bebas-neue",
+                // fontFamily: "bebas-neue",
                 fontSize: 16,
               }}
             >

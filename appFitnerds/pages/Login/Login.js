@@ -29,7 +29,7 @@ export default function App() {
         <Text
           style={{
             color: "#ffffff",
-            fontFamily: "bebas-neue",
+            // fontFamily: "bebas-neue",
             fontSize: 40,
             lineHeight: 40,
             fontWeight: 800,
@@ -50,7 +50,7 @@ export default function App() {
           style={{
             width: 322,
             height: 45,
-            fontFamily: "bebas-neue",
+            // fontFamily: "bebas-neue",
             borderWidth: 1,
             borderColor: "#7C7C7C",
             marginTop: 20,
@@ -65,7 +65,7 @@ export default function App() {
           style={{
             width: 322,
             height: 45,
-            fontFamily: "bebas-neue",
+            // fontFamily: "bebas-neue",
             borderWidth: 1,
             borderColor: "#7C7C7C",
             marginTop: 20,
@@ -106,7 +106,7 @@ export default function App() {
             <Text
               style={{
                 fontSize: 16,
-                fontFamily: "bebas-neue",
+                // fontFamily: "bebas-neue",
                 fontWeight: 700,
                 color: "#D9D9D9",
                 paddingTop: 4,
@@ -120,7 +120,7 @@ export default function App() {
             style={{
               backgroundColor: "#7C7C7C",
               fontSize: 16,
-              fontFamily: "bebas-neue",
+              // fontFamily: "bebas-neue",
               fontWeight: 700,
               borderRadius: 10,
               marginRight: 15,

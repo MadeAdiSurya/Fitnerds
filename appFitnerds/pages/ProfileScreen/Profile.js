@@ -82,7 +82,12 @@ const Profile = () => {
             alignItems: "center",
           }}
         >
-          <Text style={{ fontFamily: "bebas-neue-bold", fontSize: 60 }}>
+          <Text
+            style={{
+              // fontFamily: "bebas-neue-bold",
+              fontSize: 60,
+            }}
+          >
             {word}
           </Text>
         </View>
@@ -98,7 +103,7 @@ const Profile = () => {
           <MaterialIcons name="email" size={20} color="#7FBD3E" />
           <Text
             style={{
-              fontFamily: "bebas-neue",
+              // fontFamily: "bebas-neue",
               fontSize: 20,
               marginLeft: 10,
               color: "#ffffff",
