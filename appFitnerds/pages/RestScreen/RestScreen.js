@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 const RestScreen = () => {
   const navigation = useNavigation();
   let timer = 0;
-  const [timeLeft, setTimeLeft] = useState(3);
+  const [timeLeft, setTimeLeft] = useState(10);
 
   const startTime = () => {
     setTimeout(() => {
@@ -36,7 +36,7 @@ const RestScreen = () => {
       <Image source={require("../../src/splash-logo.png")} />
       <View
         style={{
-          backgroundColor: "#7FBD3E",
+          backgroundColor: "#121212",
           width: 200,
           height: 80,
           display: "flex",
@@ -51,6 +51,7 @@ const RestScreen = () => {
             color: "#121212",
             fontFamily: "bebas-neue-bold",
             fontSize: 36,
+            color: "#ffffff",
           }}
         >
           BREAK TIME
@@ -58,16 +59,19 @@ const RestScreen = () => {
       </View>
       <View
         style={{
-          backgroundColor: "#7FBD3E",
+          backgroundColor: "#121212",
           width: 100,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          borderRadius: 50,
         }}
       >
         <Text
-          style={{ color: "#121212", fontFamily: "bebas-neue", fontSize: 90 }}
+          style={{
+            color: "#ffffff",
+            fontFamily: "bebas-neue-bold",
+            fontSize: 90,
+          }}
         >
           {timeLeft}
         </Text>

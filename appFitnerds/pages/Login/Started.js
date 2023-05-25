@@ -33,12 +33,11 @@ export default function Started() {
   const navigation = useNavigation();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(authentication, (user) => {
+    onAuthStateChanged(authentication, (user) => {
       if (user) {
         navigation.navigate("Home");
       }
     });
-    return unsubscribe;
   }, []);
 
   const handleSignUp = () => {

@@ -47,8 +47,6 @@ const Months = [
 
 const Month = Months[currentMonthNumber];
 
-console.log(Month);
-
 export const DateSlider: React.FC = () => {
   return (
     <PagerView style={styles.container}>

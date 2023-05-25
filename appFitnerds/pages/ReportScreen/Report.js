@@ -38,8 +38,6 @@ const Report = () => {
         setEmail(null);
       }
     });
-
-    return () => unsubscribe(); // Unsubscribe from the auth state changes on component unmount
   }, []);
 
   const {

@@ -27,7 +27,7 @@ const Profile = () => {
 
   useEffect(() => {
     // Retrieve the current user
-    const unsubscribe = onAuthStateChanged(authentication, (user) => {
+    onAuthStateChanged(authentication, (user) => {
       if (user) {
         // User is signed in
         const email = user.email;
@@ -38,8 +38,6 @@ const Profile = () => {
         setEmail(null);
       }
     });
-
-    return () => unsubscribe(); // Unsubscribe from the auth state changes on component unmount
   }, []);
 
   const handleSignOut = () => {
