@@ -4,9 +4,11 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { Feather } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
-const Footer = () => {
-  const [menuSelection, setMenuSelection] = useState("Training");
+const Footer = ({ currentPage }) => {
+  const [menuSelection, setMenuSelection] = useState(currentPage);
+  const navigation = useNavigation();
 
   return (
     <View>
@@ -22,6 +24,7 @@ const Footer = () => {
           style={styles.footerIcon}
           onPress={() => {
             setMenuSelection("Training");
+            navigation.replace("Home");
           }}
         >
           <FontAwesome5
@@ -80,6 +83,7 @@ const Footer = () => {
           style={styles.footerIcon}
           onPress={() => {
             setMenuSelection("Settings");
+            navigation.replace("Profile");
           }}
         >
           <MaterialIcons

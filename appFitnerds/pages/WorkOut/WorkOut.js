@@ -6,6 +6,11 @@ import { Ionicons } from "@expo/vector-icons";
 const WorkOut = () => {
   const route = useRoute();
   const navigation = useNavigation();
+
+  const handleBack = () => {
+    navigation.replace("Home");
+  };
+
   return (
     <>
       <ScrollView style={{ backgroundColor: "#121212" }}>
@@ -22,6 +27,7 @@ const WorkOut = () => {
               flexDirection: "row",
               alignItems: "center",
             }}
+            onPress={handleBack}
           >
             <Ionicons name="chevron-back-sharp" size={24} color="#ffffff" />
             <Text

@@ -197,7 +197,7 @@ const Home = () => {
           <WorkoutCards />
         </View>
       </ScrollView>
-      <Footer />
+      <Footer currentPage={"Training"} />
     </View>
   );
 };

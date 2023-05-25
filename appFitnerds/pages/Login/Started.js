@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -8,14 +8,61 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { authentication } from "../../firebase";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 export default function Started() {
+  const route = useRoute();
+
+  const [isLogin, setIsLogin] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(authentication, (user) => {
+      if (user) {
+        navigation.navigate("Home");
+      }
+    });
+    return unsubscribe;
+  }, []);
+
+  const handleSignUp = () => {
+    createUserWithEmailAndPassword(authentication, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        setIsLogin(true);
+        console.log("Sign Up with ");
+      })
+      .catch((error) => alert(error.message));
+  };
+
+  const handleLogin = () => {
+    signInWithEmailAndPassword(authentication, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        setIsLogin(true);
+        console.log("Login with", user.email);
+        if (user) {
+          navigation.navigate("Home");
+        }
+      })
+      .catch((error) => error.message);
+  };
+
   return (
     <ImageBackground
       source={require("../../src/background-dark.png")}
       style={styles.backgroundDark}
     >
-      <View style={{ display: "flex", alignItems: "center", marginTop: 20 }}>
+      <View style={{ display: "flex", alignItems: "center", marginTop: 30 }}>
         <Image source={require("../../src/login-logo.png")}></Image>
       </View>
       <View
@@ -34,7 +81,7 @@ export default function Started() {
             lineHeight: 40,
           }}
         >
-          To get started, first enter your phone, email, or @username
+          To get started, first create your account
         </Text>
       </View>
 
@@ -45,20 +92,53 @@ export default function Started() {
         }}
       >
         <TextInput
-          placeholder="Phone, email, or username"
+          placeholder="email"
           style={{
             width: 322,
             height: 45,
-            fontFamily: "",
+            fontFamily: "bebas-neue",
             borderWidth: 1,
             borderColor: "#7C7C7C",
-            marginTop: 20,
+            marginTop: 30,
             borderRadius: 7,
             padding: 12,
             fontSize: 16,
-            backgroundColor: "white",
             fontFamily: "bebas-neue",
+            backgroundColor: "rgba(18,18,18, 0.3)",
+            color: "rgba(255,255,255,0.4)",
           }}
+          placeholderTextColor="rgba(255,255,255,0.4)"
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+        />
+      </View>
+
+      <View
+        style={{
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <TextInput
+          placeholder="password"
+          style={{
+            width: 322,
+            height: 45,
+            fontFamily: "bebas-neue",
+            borderWidth: 1,
+            borderColor: "#7C7C7C",
+            marginTop: 10,
+            borderRadius: 7,
+            padding: 12,
+            fontSize: 16,
+            fontFamily: "bebas-neue",
+            backgroundColor: "rgba(18,18,18, 0.3)",
+            color: "rgba(255,255,255,0.4)",
+          }}
+          placeholderTextColor="rgba(255,255,255,0.4)"
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+          secureTextEntry={true}
         />
       </View>
 
@@ -87,6 +167,7 @@ export default function Started() {
               borderRadius: 10,
               marginLeft: 15,
             }}
+            onPress={handleSignUp}
           >
             <Text
               style={{
@@ -97,16 +178,16 @@ export default function Started() {
                 paddingHorizontal: 6,
               }}
             >
-              Forgot Password
+              Sign Up
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{
               backgroundColor: "#7C7C7C",
-              fontSize: 16,
               borderRadius: 10,
               marginRight: 15,
             }}
+            onPress={handleLogin}
           >
             <Text
               style={{
@@ -114,9 +195,10 @@ export default function Started() {
                 paddingVertical: 4,
                 color: "#444343",
                 fontFamily: "bebas-neue",
+                fontSize: 16,
               }}
             >
-              Next
+              Login
             </Text>
           </TouchableOpacity>
         </View>
