@@ -15,6 +15,7 @@ import {
   Profile,
   ItemContext,
   DataContext,
+  Report,
 } from "./pages";
 import { FitnessContext } from "./Context";
 
@@ -45,6 +46,7 @@ export default function App() {
           <Stack.Screen name="Training" component={Training} />
           <Stack.Screen name="RestScreen" component={RestScreen} />
           <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="Report" component={Report} />
         </Stack.Navigator>
       </FitnessContext>
     </NavigationContainer>

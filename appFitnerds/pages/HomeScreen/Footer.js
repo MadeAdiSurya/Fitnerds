@@ -55,6 +55,7 @@ const Footer = ({ currentPage }) => {
           style={styles.footerIcon}
           onPress={() => {
             setMenuSelection("Report");
+            navigation.replace("Report");
           }}
         >
           <Feather

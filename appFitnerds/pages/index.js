@@ -9,6 +9,7 @@ import RestScreen from "./RestScreen/RestScreen";
 import { DataContext, ItemContext } from "../components/DataContext";
 import dataIntermediate from "../components/dataIntermediate";
 import Profile from "./ProfileScreen/Profile";
+import Report from "./ReportScreen/Report";
 
 export {
   Home,
@@ -23,4 +24,5 @@ export {
   ItemContext,
   Profile,
   dataIntermediate,
+  Report,
 };
