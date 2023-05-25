@@ -21,7 +21,7 @@ const Training = () => {
     navigation.navigate("RestScreen");
     setWorkout(workout + 1);
     setMinutes(minutes + 1);
-    setCalories(calories + 3.8);
+    setCalories(calories + 3);
     setTimeout(() => {
       setIndex(index + 1);
     }, 2000);

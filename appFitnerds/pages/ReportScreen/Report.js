@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from "react";
+import React, { useState, useContext, createContext, useEffect } from "react";
 import {
   FlatList,
   StyleSheet,
@@ -14,17 +14,53 @@ import {
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Footer from "../HomeScreen/Footer";
 import { HistorySlider } from "../HomeScreen/HistorySlider";
-
+import { db } from "../../firebase";
+import { getDoc, getDocs, doc, onSnapshot, setDoc } from "firebase/firestore";
 import { FitnessContex, FitnessItems } from "../../Context";
+import { authentication } from "../../firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 const Report = () => {
+  const [importMinutes, setImportMinutes] = useState(0);
+  const [importWorkout, setImportWorkout] = useState(0);
+  const [importCalories, setImportCalories] = useState(0);
+  const [email, setEmail] = useState([]);
+
+  useEffect(() => {
+    // Retrieve the current user
+    onAuthStateChanged(authentication, (user) => {
+      if (user) {
+        // User is signed in
+        const email = user.email;
+        setEmail(email);
+      } else {
+        // User is signed out
+        setEmail(null);
+      }
+    });
+
+    return () => unsubscribe(); // Unsubscribe from the auth state changes on component unmount
+  }, []);
+
   const {
-    minutes,
-
-    calories,
-
     workout,
+    calories,
+    minutes,
+    setExportWorkout,
+    setExportMinutes,
+    setExportCalories,
+    userEmail,
   } = useContext(FitnessItems);
+  const docRef = doc(db, "users", userEmail);
+
+  onSnapshot(docRef, (doc) => {
+    setImportWorkout(doc.data().workout + workout);
+    setImportMinutes(doc.data().calories + minutes);
+    setImportCalories(doc.data().minutes + calories);
+    setExportWorkout(doc.data().workout + workout);
+    setExportMinutes(doc.data().calories + minutes);
+    setExportCalories(doc.data().minutes + calories);
+  });
 
   const [press, setPress] = useState("");
 
@@ -84,7 +120,7 @@ const Report = () => {
                 paddingHorizontal: 50,
               }}
             >
-              <Text style={styles.homeTopText}>{workout}</Text>
+              <Text style={styles.homeTopText}>{importWorkout}</Text>
               <Text style={styles.homeTopContent}>WORKOUTS</Text>
             </View>
             <View
@@ -94,7 +130,7 @@ const Report = () => {
                 paddingHorizontal: 50,
               }}
             >
-              <Text style={styles.homeTopText}>{calories}</Text>
+              <Text style={styles.homeTopText}>{importCalories}</Text>
               <Text style={styles.homeTopContent}>KCAL</Text>
             </View>
             <View
@@ -104,7 +140,7 @@ const Report = () => {
                 paddingHorizontal: 50,
               }}
             >
-              <Text style={styles.homeTopText}>{minutes}</Text>
+              <Text style={styles.homeTopText}>{importMinutes}</Text>
               <Text style={styles.homeTopContent}>MINS</Text>
             </View>
           </View>

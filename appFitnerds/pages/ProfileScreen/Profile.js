@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   View,
   Text,
@@ -12,8 +12,14 @@ import Footer from "../HomeScreen/Footer";
 import { authentication } from "../../firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { MaterialIcons } from "@expo/vector-icons";
+import { db } from "../../firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { FitnessContex, FitnessItems } from "../../Context";
 
 const Profile = () => {
+  const { exportWorkout, exportMinutes, exportCalories, userEmail } =
+    useContext(FitnessItems);
+
   const [email, setEmail] = useState(null);
   const [word, setWord] = useState(null);
 
@@ -38,8 +44,14 @@ const Profile = () => {
 
   const handleSignOut = () => {
     signOut(authentication)
-      .then((user) => {
+      .then((email) => {
         console.log("Sign Out Success");
+        console.log(email);
+        setDoc(doc(db, "users", userEmail), {
+          calories: exportCalories,
+          workout: exportWorkout,
+          minutes: exportMinutes,
+        });
         navigation.replace("Started");
       })
       .catch((error) => alert(error.message));
@@ -113,30 +125,6 @@ const Profile = () => {
           <Text>Sign Out</Text>
         </TouchableOpacity>
       </View>
-      {/* <View
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: 200,
-        }}
-      >
-        <TouchableOpacity
-          style={{
-            width: 150,
-            height: 50,
-            backgroundColor: "white",
-            borderRadius: 10,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Text style={{ fontFamily: "bebas-neue", fontSize: 24 }}>
-            Sign Out
-          </Text>
-        </TouchableOpacity>
-      </View> */}
 
       <Footer currentPage={"Settings"} />
     </View>

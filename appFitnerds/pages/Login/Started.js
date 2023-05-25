@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   View,
   Text,
@@ -7,6 +7,7 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { authentication } from "../../firebase";
@@ -15,9 +16,15 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { db } from "../../firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { FitnessItems, FitnessContext } from "../../Context";
 
 export default function Started() {
   const route = useRoute();
+
+  const { setWorkout, setMinutes, setCalories, setUser, setUserEmail } =
+    useContext(FitnessItems);
 
   const [isLogin, setIsLogin] = useState(false);
   const [email, setEmail] = useState("");
@@ -40,6 +47,16 @@ export default function Started() {
         const user = userCredential.user;
         setIsLogin(true);
         console.log("Sign Up with ");
+        setWorkout(0);
+        setMinutes(0);
+        setCalories(0);
+        setUserEmail(user.email);
+        setDoc(doc(db, "users", user.email), {
+          calories: 0,
+          workout: 0,
+          minutes: 0,
+        });
+        navigation.replace("Started");
       })
       .catch((error) => alert(error.message));
   };
@@ -52,9 +69,13 @@ export default function Started() {
         console.log("Login with", user.email);
         if (user) {
           navigation.navigate("Home");
+          setWorkout(0);
+          setMinutes(0);
+          setCalories(0);
+          setUserEmail(user.email);
         }
       })
-      .catch((error) => error.message);
+      .catch((error) => alert(error.message));
   };
 
   return (
