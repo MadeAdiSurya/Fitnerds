@@ -13,6 +13,20 @@ const Training = () => {
   const navigation = useNavigation();
   const { minutes, setMinutes, calories, setCalories, setWorkout, workout } =
     useContext(FitnessItems);
+
+  let timer = 0;
+  const [timeLeft, setTimeLeft] = useState(3);
+
+  const handleRest = () => {
+    navigation.navigate("RestScreen");
+    setWorkout(workout + 1);
+    setMinutes(minutes + 1);
+    setCalories(calories + 3.8);
+    setTimeout(() => {
+      setIndex(index + 1);
+    }, 2000);
+  };
+
   return (
     <View style={{ backgroundColor: "#7FBD3E", flex: 1 }}>
       <View
@@ -116,15 +130,7 @@ const Training = () => {
                 alignItems: "center",
                 elevation: 3,
               }}
-              onPress={() => {
-                navigation.navigate("RestScreen");
-                setWorkout(workout + 1);
-                setMinutes(minutes + 2.5);
-                setCalories(calories + 6.3);
-                setTimeout(() => {
-                  setIndex(index + 1);
-                }, 2000);
-              }}
+              onPress={handleRest}
             >
               <Text
                 style={{

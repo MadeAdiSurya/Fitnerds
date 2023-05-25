@@ -7,6 +7,7 @@ import WorkOut from "./WorkOut/WorkOut";
 import Training from "./Training/Training";
 import RestScreen from "./RestScreen/RestScreen";
 import { DataContext, ItemContext } from "../components/DataContext";
+import dataIntermediate from "../components/dataIntermediate";
 import Profile from "./ProfileScreen/Profile";
 
 export {
@@ -21,4 +22,5 @@ export {
   DataContext,
   ItemContext,
   Profile,
+  dataIntermediate,
 };

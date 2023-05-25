@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Image, StyleSheet, TouchableOpacity } from "react-native";
-import dataFitnerds from "../../components/dataFitnerds";
 import { Pressable, View, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import dataExpert from "../../components/dataExpert";
 
-const WorkoutCards = () => {
-  const workoutData = dataFitnerds;
+const WorkoutCardsExpert = () => {
+  const workoutData = dataExpert;
   const navigation = useNavigation();
 
   return (
@@ -55,4 +55,4 @@ const WorkoutCards = () => {
   );
 };
 
-export default WorkoutCards;
+export default WorkoutCardsExpert;

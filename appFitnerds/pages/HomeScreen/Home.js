@@ -14,7 +14,10 @@ import {
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Footer from "./Footer";
 import { DateSlider } from "./DateSlider";
+import WorkoutCardsInter from "./WorkoutCardsInter";
 import WorkoutCards from "./WorkoutCards";
+import WorkoutCardsExpert from "./WorkoutCardsExpert";
+
 import { FitnessContex, FitnessItems } from "../../Context";
 
 const HEADER_MAX_HEIGHT = 70;
@@ -195,6 +198,34 @@ const Home = () => {
             BEGINNER
           </Text>
           <WorkoutCards />
+        </View>
+        <View style={{ marginTop: 50 }}>
+          <Text
+            style={{
+              fontFamily: "bebas-neue-bold",
+              color: "#141414",
+              fontSize: 18,
+              marginLeft: 25,
+              marginBottom: 5,
+            }}
+          >
+            INTERMEDIATE
+          </Text>
+          <WorkoutCardsInter />
+        </View>
+        <View style={{ marginTop: 50 }}>
+          <Text
+            style={{
+              fontFamily: "bebas-neue-bold",
+              color: "#141414",
+              fontSize: 18,
+              marginLeft: 25,
+              marginBottom: 5,
+            }}
+          >
+            EXPERT
+          </Text>
+          <WorkoutCardsExpert />
         </View>
       </ScrollView>
       <Footer currentPage={"Training"} />
